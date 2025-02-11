@@ -1,81 +1,118 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6439531927625870" crossorigin="anonymous"></script>
-    <title>OPERATION 500</title>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlocGG</title>
     <style>
-      body {
-        font-family: 'Arial', sans-serif;
-        background-color: #282c34;
-        color: #fff;
-        text-align: center;
-        padding: 2rem;
-        overflow: auto;
-      }
-  
-      h1 {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        position: relative;
-        display: block;
-        animation: glitch 1s infinite;
-      }
-  
-      p {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-        animation: glitch 1.5s infinite ease-in-out;
-      }
-  
-      a {
-        color: #61dafb;
-        text-decoration: none;
-        font-size: 1.2rem;
-        border: 2px solid #61dafb;
-        padding: 0.5rem 1rem;
-        border-radius: 5px;
-        transition: background-color 0.3s, color 0.3s;
-        animation: glitch 3s infinite ease-in-out;
-      }
-  
-      a:hover {
-        background-color: #61dafb;
-        color: #282c34;
-      }
-  
-      @keyframes glitch {
-        0% {
-          text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
-          transform: translate(0, 0);
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #282c34;
+            color: #fff;
+            text-align: center;
+            padding: 2rem;
+            overflow: auto;
         }
-        25% {
-          text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff;
-          transform: translate(-2px, -2px);
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            animation: glitch 1s infinite;
         }
-        50% {
-          text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff;
-          transform: translate(2px, 2px);
+        input, button {
+            font-size: 1.5rem;
+            padding: 0.5rem;
+            margin: 0.5rem;
         }
-        75% {
-          text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff;
-          transform: translate(-2px, 2px);
+        ul {
+            list-style: none;
+            padding: 0;
         }
-        100% {
-          text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff;
-          transform: translate(0, 0);
+        li a {
+            display: block;
+            font-size: 1.5rem;
+            color: #61dafb;
+            text-decoration: none;
+            padding: 0.5rem;
+            border: 2px solid #61dafb;
+            border-radius: 5px;
+            margin: 0.5rem;
+            transition: 0.3s;
+            animation: glitch 3s infinite;
         }
-      }
+        li a:hover {
+            background-color: #61dafb;
+            color: #282c34;
+        }
+        nav {
+            background: #333;
+            padding: 1rem;
+            text-align: center;
+        }
+        nav a {
+            color: #61dafb;
+            margin: 0 1rem;
+            text-decoration: none;
+            font-size: 1.5rem;
+        }
+        @keyframes glitch {
+            0%, 100% { text-shadow: 2px 2px #ff00ff, -2px -2px #00ffff; }
+            25% { text-shadow: -2px -2px #ff00ff, 2px 2px #00ffff; }
+            50% { text-shadow: 2px -2px #ff00ff, -2px 2px #00ffff; }
+            75% { text-shadow: -2px 2px #ff00ff, 2px -2px #00ffff; }
+        }
     </style>
-  </head>
-  <body>
-    <h1>The SLIDES<br></h1>
-    <a href="https://docs.google.com/presentation/d/1_bPFr8GE1QVz6Kugrwn3mLV8WwmdfW6u4dGq4yI31m8/edit?usp=sharing">Slides</a>
-    <h1>Billboard<br></h1>
-    <a href="https://operation-500.github.io/billboard">Student Billboard</a>
-    <h1>Google Form<br></h1>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMG3duDka2C4DnjJlBvfkAoZU4xJQF-Eew5zOgN1dFtO0HXw/viewform?usp=dialog">Feedback + Info etc.</a>
-    <h1>GAMES<br></h1>
-    <a href="https://rpicode.github.io/games">Games</a>
-    <p>test</p>
-  </body>
+    <script>
+        function preset(url) {
+            let formattedURL = url.startsWith("http") ? url : "https://" + url;
+            window.open(formattedURL + '?' + 'i'.repeat(16380), '_blank');
+        }
+
+        function openURL() {
+            let url = document.getElementById("URL").value.trim();
+            if (url) {
+                preset(url);
+                addPreset(url);
+            }
+        }
+
+        function addPreset(url) {
+            let presets = JSON.parse(localStorage.getItem("presets")) || [];
+            if (!presets.includes(url)) {
+                presets.push(url);
+                localStorage.setItem("presets", JSON.stringify(presets));
+                loadPresets();
+            }
+        }
+
+        function loadPresets() {
+            let presets = JSON.parse(localStorage.getItem("presets")) || [];
+            let list = document.getElementById("presetList");
+            list.innerHTML = "";
+            presets.forEach(url => {
+                let li = document.createElement("li");
+                let a = document.createElement("a");
+                a.href = "#";
+                a.textContent = url;
+                a.onclick = () => preset(url);
+                li.appendChild(a);
+                list.appendChild(li);
+            });
+        }
+
+        window.onload = loadPresets;
+    </script>
+</head>
+<body>
+    <nav>
+        <a href="https://docs.google.com/presentation/d/1_bPFr8GE1QVz6Kugrwn3mLV8WwmdfW6u4dGq4yI31m8/edit?usp=sharing">Slides</a>
+        <a href="https://operation-500.github.io/billboard">Student Billboard</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfMG3duDka2C4DnjJlBvfkAoZU4xJQF-Eew5zOgN1dFtO0HXw/viewform?usp=dialog">Feedback</a>
+        <a href="https://rpicode.github.io/games">Games</a>
+    </nav>
+    <h1>BlocGG</h1>
+    <input type="text" id="URL" placeholder="Enter website URL">
+    <button onclick="openURL()">Open Website</button>
+    <h2>Presets</h2>
+    <ul id="presetList"></ul>
+</body>
 </html>
