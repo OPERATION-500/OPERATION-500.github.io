@@ -37,4 +37,5 @@ function loadPresets() {
 
 function clearPresets() {
   localStorage.clear();
+  window.location.href = window.location.href;
 }
