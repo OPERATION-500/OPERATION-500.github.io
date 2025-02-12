@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OPERATION 500</title>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6439531927625870" crossorigin="anonymous"></script>
+    <!-- ^ GOOGLE ADSENSE ^ -->
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -104,6 +105,10 @@
             });
         }
 
+        function clearPresets() {
+            localStorage.clear();
+        }
+
         window.onload = loadPresets;
     </script>
 </head>
@@ -118,6 +123,7 @@
     <input type="text" id="URL" placeholder="Enter website URL">
     <button onclick="openURL()">Open Website</button>
     <h2>Presets</h2>
+    <button onclick="clearPresets()">Clear</button>
     <ul id="presetList"></ul>
 </body>
 </html>
